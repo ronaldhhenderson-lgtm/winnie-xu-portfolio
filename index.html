@@ -417,4 +417,45 @@ tbody tr:hover{background:#f1f5f9}
   </table>
 </div>
 
-<!-- ===== CTA 
+<!-- ===== CTA ===== -->
+<div class="section" style="background:linear-gradient(135deg,var(--navy),var(--navy2));color:var(--white);text-align:center;padding:48px 36px;border-radius:16px">
+  <h2 style="font-size:28px;margin-bottom:8px"><span class="en">Ready to Power AI's Future?</span><span class="zh" style="display:none">准备好为AI未来供电了吗？</span></h2>
+  <p style="color:var(--gold-light);font-size:16px;margin-bottom:24px"><span class="en">Contact us for partnership opportunities</span><span class="zh" style="display:none">联系我们洽谈合作机会</span></p>
+  <p style="font-size:14px;opacity:.8">info@hendersontranspacific.com</p>
+</div>
+
+<div style="text-align:center;padding:32px 24px;color:var(--text2);font-size:12px">
+  <p>&copy; 2025 Henderson Transpacific LLC. All rights reserved.</p>
+  <p style="margin-top:4px"><span class="en">Confidential — For Authorized Recipients Only</span><span class="zh" style="display:none">机密文件 — 仅供授权人员查阅</span></p>
+</div>
+
+<script>
+function setLang(lang){
+  document.querySelectorAll('.en').forEach(el=>el.style.display=lang==='en'?'':'none');
+  document.querySelectorAll('.zh').forEach(el=>el.style.display=lang==='zh'?'':'none');
+  document.getElementById('btn-en').classList.toggle('active',lang==='en');
+  document.getElementById('btn-zh').classList.toggle('active',lang==='zh');
+}
+</script>
+
+</div><!-- /main-content -->
+
+<script>
+async function verifyPw(){
+  var pw=document.getElementById('pwInput').value;
+  var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw));
+  var hash=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+  if(hash==='a2e7fc3df012bc227ff036774ed2d0e8aba1fe333629c632b777c831eeb7a43e'){
+    document.getElementById('pwGate').classList.add('hidden');
+    document.getElementById('mainContent').classList.add('unlocked');
+  } else {
+    document.getElementById('pwErr').textContent='Invalid password / 密码错误';
+    document.getElementById('pwInput').value='';
+    document.getElementById('pwInput').focus();
+  }
+}
+document.getElementById('pwInput').addEventListener('keydown',function(e){if(e.key==='Enter')verifyPw()});
+</script>
+
+</body>
+</html>
