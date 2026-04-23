@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Henderson Transpacific LLC — BESS + Solar Energy Solutions</title>
+<style>
+:root{
+  --navy:#0a1628;--navy2:#132040;--gold:#d4a24e;--gold-light:#f5d78e;--gold-dark:#b8872e;
+  --white:#fff;--off:#f7f8fb;--text:#2d3748;--text2:#64748b;--green:#16a34a;--blue:#2563eb;
+  --cyan:#0891b2;--border:#e2e8f0;
+  --shadow:0 2px 8px rgba(0,0,0,.08);--shadow-lg:0 12px 24px rgba(0,0,0,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Roboto,'Noto Sans SC','PingFang SC',sans-serif;color:var(--text);line-height:1.7;background:var(--off)}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,#1a3060 100%);color:var(--white);padding:60px 24px 50px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);width:120%;height:80px;background:var(--off);border-radius:50% 50% 0 0}
+.hero .lang-row{position:absolute;top:16px;right:24px;display:flex;gap:4px}
+.hero .lang-row button{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;padding:5px 14px;border-radius:6px;cursor:pointer;font-size:13px;transition:.2s}
+.hero .lang-row button.active{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:700}
+.hero .lang-row button:hover{border-color:var(--gold)}
+.company-name{font-size:36px;font-weight:800;letter-spacing:1px;margin-bottom:4px}
+.company-name span{color:var(--gold)}
+.hero .sub{font-size:16px;color:var(--gold-light);margin-bottom:18px;font-weight:500}
+.hero .tagline{font-size:20px;font-weight:300;opacity:.9;max-width:700px;margin:0 auto;line-height:1.5}
+
+/* Container */
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* Section */
+.section{background:var(--white);border-radius:16px;padding:36px 40px;box-shadow:var(--shadow);margin-bottom:24px;position:relative}
+.section h2{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.section h2 .gold{color:var(--gold-dark)}
+.section h3{font-size:17px;font-weight:600;color:var(--navy);margin:20px 0 8px}
+.section p{margin-bottom:12px;font-size:15px}
+
+/* Stat row */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:24px 0}
+.stat{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:12px;padding:20px;text-align:center;color:var(--white)}
+.stat .num{font-size:30px;font-weight:800;color:var(--gold)}
+.stat .lab{font-size:12px;text-transform:uppercase;letter-spacing:.8px;opacity:.8;margin-top:2px}
+
+/* Cards grid */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px}
+.card{background:var(--off);border-radius:12px;padding:24px;border-left:4px solid var(--gold);transition:.2s}
+.card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.card .icon{font-size:32px;margin-bottom:8px}
+.card h4{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.card p{font-size:13px;color:var(--text2)}
+
+/* Table */
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}
+thead{background:var(--navy);color:#fff}
+th{padding:12px 14px;text-align:left;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+td{padding:10px 14px;border-bottom:1px solid var(--border)}
+tbody tr:hover{background:#f1f5f9}
+
+/* Badge */
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
+.b-gold{background:#fef3c7;color:#92400e}
+.b-green{background:#d1fae5;color:#065f46}
+.b-blue{background:#dbeafe;color:#1e40af}
+
+/* Value prop boxes */
+.vp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:16px}
+.vp-box{background:var(--white);border:2px solid var(--border);border-radius:14px;padding:28px;position:relative;overflow:hidden;transition:.2s}
+.vp-box:hover{border-color:var(--gold);box-shadow:var(--shadow)}
+.vp-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gold)}
+.vp-box h4{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.vp-box .region{font-size:12px;color:var(--gold-dark);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.vp-box p{font-size:13px}
+.vp-box ul{list-style:none;padding:0;margin-top:8px}
+.vp-box li{font-size:13px;padding:3px 0 3px 18px;position:relative}
+.vp-box li::before{content:'';position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:16px;padding:48px 40px;text-align:center;color:var(--white);margin-bottom:24px}
+.cta-section h2{color:var(--gold);border:none;padding:0;margin-bottom:12px}
+.cta-section p{color:rgba(255,255,255,.85);font-size:16px;max-width:700px;margin:0 auto 20px}
+.cta-btn{display:inline-block;background:var(--gold);color:var(--navy);padding:14px 36px;border-radius:10px;font-size:16px;font-weight:700;text-decoration:none;transition:.2s;border:none;cursor:pointer}
+.cta-btn:hover{background:var(--gold-light);transform:scale(1.03)}
+
+/* Footer */
+.footer{text-align:center;padding:30px 24px;color:var(--text2);font-size:13px}
+
+/* Responsive */
+@media(max-width:768px){
+  .hero{padding:40px 16px 36px}
+  .company-name{font-size:24px}
+  .section{padding:24px 20px}
+  .stat-row{grid-template-columns:repeat(2,1fr)}
+}
+@media print{.hero .lang-row{display:none}}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="lang-row">
+    <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+    <button id="btn-zh" onclick="setLang('zh')">中文</button>
+  </div>
+  <div class="company-name"><span>Henderson</span> Transpacific LLC</div>
+  <div class="sub">
+    <span class="en">BESS + Solar Energy Solutions for the AI Era</span>
+    <span class="zh" style="display:none">AI时代的BESS+光伏能源解决方案</span>
+  </div>
+  <div class="tagline">
+    <span class="en">Powering the world's AI data centers with reliable, scalable, clean energy infrastructure — from the Pacific Rim to every continent.</span>
+    <span class="zh" style="display:none">以可靠、可扩展的清洁能源基础设施为全球AI数据中心供电 — 从环太平洋到世界各地。</span>
+  </div>
+</div>
+
+<div style="height:40px"></div>
+<div class="container">
+
+<!-- ===== WHO WE ARE ===== -->
+<div class="section">
+  <h2><span class="gold">01</span> &mdash;
+    <span class="en">Who We Are</span>
+    <span class="zh" style="display:none">关于我们</span>
+  </h2>
+  <p class="en">Henderson Transpacific LLC is a transpacific energy solutions provider specializing in Battery Energy Storage Systems (BESS) and solar power systems designed for mission-critical AI data center infrastructure. We bridge the world's fastest-growing energy markets — connecting cutting-edge technology, bankable project delivery, and deep regional expertise across the United States, Asia-Pacific, the Middle East, Europe, and beyond.</p>
+  <p class="zh" style="display:none">Henderson Transpacific LLC 是一家跨太平洋能源解决方案提供商，专注于为关键AI数据中心基础设施提供电池储能系统（BESS）和光伏发电系统。我们连接全球增长最快的能源市场 — 将尖端技术、可融资的项目交付能力以及深厚的区域专业知识覆盖美国、亚太、中东、欧洲及全球各地。</p>
+
+  <p class="en">Our mission is clear: deliver <strong>24/7 clean, reliable power</strong> to the AI data centers that are reshaping the global economy — on time, on budget, at gigawatt scale.</p>
+  <p class="zh" style="display:none">我们的使命清晰明确：为正在重塑全球经济的AI数据中心提供<strong>24/7全天候清洁可靠电力</strong> — 按时、按预算、以吉瓦级规模交付。</p>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="num">GW+</div>
+      <div class="lab"><span class="en">Scalable Capacity</span><span class="zh" style="display:none">可扩展容量</span></div>
+    </div>
+    <div class="stat">
+      <div class="num">24/7</div>
+      <div class="lab"><span class="en">Dispatchable Power</span><span class="zh" style="display:none">可调度电力</span></div>
+    </div>
+    <div class="stat">
+      <div class="num">Transpacific</div>
+      <div class="lab"><span class="en">Global Reach</span><span class="zh" style="display:none">全球覆盖</span></div>
+    </div>
+    <div class="stat">
+      <div class="num">AI-Ready</div>
+      <div class="lab"><span class="en">Mission-Critical Grade</span><span class="zh" style="display:none">关键任务级</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== THE OPPORTUNITY ===== -->
+<div class="section">
+  <h2><span class="gold">02</span> &mdash;
+    <span class="en">The $700 Billion Opportunity</span>
+    <span class="zh" style="display:none">7000亿美元的市场机遇</span>
+  </h2>
+  <p class="en">In 2026, the world's hyperscalers — Amazon, Microsoft, Google, Meta, OpenAI, and others — are committing nearly <strong>$700 billion</strong> to AI data center infrastructure. Power is the #1 bottleneck. Grid interconnection queues stretch 18–36 months. Regulators in Europe, the Middle East, and Asia-Pacific are mandating clean energy for new data centers. The answer? <strong>BESS + Solar</strong> — co-located, behind-the-meter, 24/7 dispatchable clean power.</p>
+  <p class="zh" style="display:none">2026年，全球超大规模企业 — Amazon、Microsoft、Google、Meta、OpenAI等 — 正投入近<strong>7000亿美元</strong>用于AI数据中心基础设施。电力是首要瓶颈。电网接入排队长达18-36个月。欧洲、中东和亚太的监管机构正在强制要求新数据中心使用清洁能源。答案是什么？<strong>BESS+光伏</strong> — 共址部署、表后供电、24/7全天候可调度清洁电力。</p>
+
+  <div class="stat-row">
+    <div class="stat"><div class="num">$700B</div><div class="lab"><span class="en">2026 AI DC Capex</span><span class="zh" style="display:none">2026年AI数据中心资本支出</span></div></div>
+    <div class="stat"><div class="num">20 GW</div><div class="lab"><span class="en">BESS Opportunity (2035)</span><span class="zh" style="display:none">储能机会（至2035年）</span></div></div>
+    <div class="stat"><div class="num">28-38%</div><div class="lab"><span class="en">BESS Market CAGR</span><span class="zh" style="display:none">储能市场复合增长率</span></div></div>
+    <div class="stat"><div class="num">$6B</div><div class="lab"><span class="en">AI DC BESS Market 2030</span><span class="zh" style="display:none">2030年AI数据中心储能市场</span></div></div>
+  </div>
+</div>
+
+<!-- ===== WHAT WE DELIVER ===== -->
+<div class="section">
+  <h2><span class="gold">03</span> &mdash;
+    <span class="en">What We Deliver</span>
+    <span class="zh" style="display:none">我们提供的服务</span>
+  </h2>
+  <p class="en">Henderson Transpacific delivers end-to-end BESS + Solar energy solutions purpose-built for AI data center workloads. Every solution is engineered for 99.999% uptime, rapid deployment, and seamless integration with data center power architectures.</p>
+  <p class="zh" style="display:none">Henderson Transpacific 提供端到端的BESS+光伏能源解决方案，专为AI数据中心工作负载量身定制。每一个解决方案都为99.999%的正常运行时间、快速部署和与数据中心电力架构的无缝集成而设计。</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="icon">&#9889;</div>
+      <h4><span class="en">BESS — Battery Energy Storage Systems</span><span class="zh" style="display:none">BESS — 电池储能系统</span></h4>
+      <p class="en">Utility-scale and behind-the-meter LFP battery storage. Standardized, factory-built containerized blocks for rapid deployment. MV and HV configurations for 50 MW to multi-GW scale. Grid bypass, peak shaving, frequency regulation, and 24/7 solar dispatch.</p>
+      <p class="zh" style="display:none">公用事业级和表后LFP电池储能。标准化工厂预制集装箱模块，实现快速部署。50 MW至多GW规模的中压和高压配置。绕网供电、削峰填谷、频率调节和24/7光伏调度。</p>
+    </div>
+    <div class="card">
+      <div class="icon">&#9728;&#65039;</div>
+      <h4><span class="en">Solar Power Systems</span><span class="zh" style="display:none">光伏发电系统</span></h4>
+      <p class="en">Ground-mount and rooftop solar arrays from 10 MW to GW scale. Optimized for data center co-location with maximum energy density. Paired with BESS for round-the-clock dispatchable clean power. Compatible with PPA, lease, and direct ownership structures.</p>
+      <p class="zh" style="display:none">10 MW至GW级地面和屋顶光伏阵列。针对数据中心共址优化，实现最大能量密度。与BESS配对实现全天候可调度清洁电力。兼容PPA、租赁和直接所有权结构。</p>
+    </div>
+    <div class="card">
+      <div class="icon">&#128297;</div>
+      <h4><span class="en">Turnkey EPC & Integration</span><span class="zh" style="display:none">交钥匙EPC与系统集成</span></h4>
+      <p class="en">Full engineering, procurement, and construction services. Seamless integration with data center electrical infrastructure (MV/HV switchgear, transformers, UPS). Project management from design through commissioning. O&M support and performance guarantees.</p>
+      <p class="zh" style="display:none">完整的工程、采购和施工服务。与数据中心电气基础设施（中压/高压开关柜、变压器、UPS）无缝集成。从设计到调试的全程项目管理。运维支持和性能保证。</p>
+    </div>
+    <div class="card">
+      <div class="icon">&#127758;</div>
+      <h4><span class="en">Consulting & Market Advisory</span><span class="zh" style="display:none">咨询与市场顾问</span></h4>
+      <p class="en">Energy procurement strategy for AI data center operators. Regulatory navigation across US, EU, Middle East, and APAC. Site selection and grid interconnection advisory. PPA structuring and financial modeling for solar + BESS projects.</p>
+      <p class="zh" style="display:none">面向AI数据中心运营商的能源采购战略。美国、欧盟、中东和亚太地区的监管指导。选址和电网接入咨询。光伏+储能项目的PPA结构设计和财务建模。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<div class="section">
+  <h2><span class="gold">04</span> &mdash;
+    <span class="en">Why AI Data Centers Choose Henderson Transpacific</span>
+    <span class="zh" style="display:none">AI数据中心为何选择Henderson Transpacific</span>
+  </h2>
+
+  <div class="vp-grid">
+    <div class="vp-box">
+      <h4><span class="en">Bypass the Grid Queue</span><span class="zh" style="display:none">绕过电网排队</span></h4>
+      <div class="region"><span class="en">Critical in: USA, Australia, Canada</span><span class="zh" style="display:none">关键市场：美国、澳大利亚、加拿大</span></div>
+      <p class="en">Utility interconnection queues stretch 18–36 months across the US, Australia, and Canada. Our on-site BESS + Solar systems let your data center go live <strong>months ahead of schedule</strong> — without waiting for grid upgrades. Time-to-power is the #1 competitive advantage in the AI race.</p>
+      <p class="zh" style="display:none">美国、澳大利亚和加拿大的电网接入排队长达18-36个月。我们的现场BESS+光伏系统让您的数据中心<strong>提前数月投入运营</strong> — 无需等待电网升级。电力就绪时间是AI竞赛中的第一竞争优势。</p>
+    </div>
+
+    <div class="vp-box">
+      <h4><span class="en">24/7 Dispatchable Clean Power</span><span class="zh" style="display:none">24/7全天候可调度清洁电力</span></h4>
+      <div class="region"><span class="en">Critical in: All Regions</span><span class="zh" style="display:none">关键市场：所有区域</span></div>
+      <p class="en">AI workloads need 99.999% uptime. Solar alone cannot deliver that. Our BESS + Solar bundles store daytime solar energy and dispatch it at night, providing <strong>round-the-clock clean power</strong> that meets or exceeds grid reliability — while eliminating diesel backup dependency.</p>
+      <p class="zh" style="display:none">AI工作负载需要99.999%的正常运行时间。仅靠光伏无法实现。我们的BESS+光伏组合存储白天的光伏能量并在夜间调度，提供<strong>全天候清洁电力</strong>，达到或超过电网可靠性 — 同时消除对柴油备用的依赖。</p>
+    </div>
+
+    <div class="vp-box">
+      <h4><span class="en">Regulatory Compliance Fast-Track</span><span class="zh" style="display:none">快速满足监管合规</span></h4>
+      <div class="region"><span class="en">Critical in: EU, UAE, Saudi, Singapore, Australia</span><span class="zh" style="display:none">关键市场：欧盟、阿联酋、沙特、新加坡、澳大利亚</span></div>
+      <p class="en">Germany mandates PUE 1.2 from 2026. The UAE and Saudi Arabia require 100% renewable energy for AI campuses. Singapore only approves green data centers. Australia requires sustainability plans for approvals. Our systems are pre-engineered for global regulatory compliance.</p>
+      <p class="zh" style="display:none">德国从2026年起要求PUE 1.2。阿联酋和沙特要求AI园区100%使用可再生能源。新加坡仅批准绿色数据中心。澳大利亚要求审批必须有可持续发展计划。我们的系统为全球监管合规预先设计。</p>
+    </div>
+
+    <div class="vp-box">
+      <h4><span class="en">Massive Cost Savings via Arbitrage</span><span class="zh" style="display:none">通过套利实现大幅成本节约</span></h4>
+      <div class="region"><span class="en">Critical in: Texas (ERCOT), UK, Japan, Germany</span><span class="zh" style="display:none">关键市场：德州（ERCOT）、英国、日本、德国</span></div>
+      <p class="en">High-electricity-cost markets offer extraordinary BESS value. In Texas, ERCOT grid volatility enables buy-low/dispatch-high arbitrage. UK industrial rates exceed $0.20/kWh. Japan reaches $0.19/kWh. Our BESS systems turn electricity price volatility into <strong>millions in annual savings</strong>.</p>
+      <p class="zh" style="display:none">高电价市场提供了非凡的储能价值。在德州，ERCOT电网波动实现低买高卖套利。英国工业电价超过$0.20/kWh。日本达$0.19/kWh。我们的储能系统将电价波动转化为<strong>数百万美元的年度节约</strong>。</p>
+    </div>
+
+    <div class="vp-box">
+      <h4><span class="en">Transpacific Supply Chain Advantage</span><span class="zh" style="display:none">跨太平洋供应链优势</span></h4>
+      <div class="region"><span class="en">Global Advantage</span><span class="zh" style="display:none">全球优势</span></div>
+      <p class="en">Henderson Transpacific bridges Asian manufacturing scale with Western project delivery standards. We source best-in-class LFP batteries and tier-1 solar modules at scale, delivering <strong>cost advantages of 15–25%</strong> over single-region competitors — without compromising quality, certification, or delivery speed.</p>
+      <p class="zh" style="display:none">Henderson Transpacific将亚洲制造规模与西方项目交付标准相结合。我们大规模采购一流LFP电池和Tier-1光伏组件，实现<strong>15-25%的成本优势</strong> — 不牺牲质量、认证或交付速度。</p>
+    </div>
+
+    <div class="vp-box">
+      <h4><span class="en">Speed — Standardized Rapid Deployment</span><span class="zh" style="display:none">速度 — 标准化快速部署</span></h4>
+      <div class="region"><span class="en">Global Advantage</span><span class="zh" style="display:none">全球优势</span></div>
+      <p class="en">The AI data center market has shifted to standardized, factory-built BESS blocks. Our containerized, pre-tested systems ship globally and deploy in <strong>weeks, not months</strong>. In the AI race, every day of delay costs millions in lost compute revenue. We move at the speed of AI.</p>
+      <p class="zh" style="display:none">AI数据中心市场已转向标准化、工厂预制的BESS模块。我们的集装箱化、预测试系统全球发货，<strong>数周而非数月</strong>即可部署。在AI竞赛中，每天的延迟意味着数百万美元的算力收入损失。我们以AI的速度前进。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TARGET MARKETS ===== -->
+<div class="section">
+  <h2><span class="gold">05</span> &mdash;
+    <span class="en">Our Target Markets</span>
+    <span class="zh" style="display:none">我们的目标市场</span>
+  </h2>
+  <p class="en">Henderson Transpacific serves the world's highest-growth AI data center energy markets — delivering BESS + Solar solutions tailored to each region's unique grid, regulatory, and climate conditions.</p>
+  <p class="zh" style="display:none">Henderson Transpacific服务于全球增长最快的AI数据中心能源市场 — 提供针对各区域独特电网、监管和气候条件量身定制的BESS+光伏解决方案。</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th><span class="en">Market</span><span class="zh" style="display:none">市场</span></th>
+        <th><span class="en">Key Clients / Projects</span><span class="zh" style="display:none">关键客户/项目</span></th>
+        <th><span class="en">Our Value Add</span><span class="zh" style="display:none">我们的增值</span></th>
+        <th><span class="en">Est. BESS+Solar Demand</span><span class="zh" style="display:none">预估BESS+光伏需求</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>USA</strong> 🇺🇸</td>
+        <td>Stargate, Amazon, Microsoft, Crusoe, Google, Meta, xAI</td>
+        <td class="en">Grid bypass + ERCOT arbitrage + rapid deployment</td>
+        <td class="zh" style="display:none">绕网供电 + ERCOT套利 + 快速部署</td>
+        <td>10–20 GW</td>
+      </tr>
+      <tr>
+        <td><strong>UAE / Saudi</strong> 🇦🇪🇸🇦</td>
+        <td>G42 (5 GW), NEOM, DataVolt, Khazna, Masdar</td>
+        <td class="en">World's best solar + mandatory BESS for 24/7</td>
+        <td class="zh" style="display:none">全球最佳光照 + 24/7强制BESS</td>
+        <td>5–10 GW</td>
+      </tr>
+      <tr>
+        <td><strong>India</strong> 🇮🇳</td>
+        <td>Adani ($100B), Google ($15B), Microsoft ($17.5B), Amazon</td>
+        <td class="en">Lowest solar LCOE + green campus permits</td>
+        <td class="zh" style="display:none">最低光伏LCOE + 绿色园区许可</td>
+        <td>3–8 GW</td>
+      </tr>
+      <tr>
+        <td><strong>Europe</strong> 🇪🇺</td>
+        <td>Echelon (Ireland), Microsoft (Sweden), AWS (Spain), Equinix</td>
+        <td class="en">EU PUE mandate compliance + UK/DE cost arbitrage</td>
+        <td class="zh" style="display:none">EU PUE合规 + 英国/德国成本套利</td>
+        <td>2–5 GW</td>
+      </tr>
+      <tr>
+        <td><strong>Asia-Pacific</strong> 🇯🇵🇰🇷🇸🇬</td>
+        <td>SoftBank, NTT, Samsung, Equinix, Keppel</td>
+        <td class="en">Grid resilience (JP) + green permits (SG)</td>
+        <td class="zh" style="display:none">电网韧性（日本）+ 绿色许可（新加坡）</td>
+        <td>1–3 GW</td>
+      </tr>
+      <tr>
+        <td><strong>Australia</strong> 🇦🇺</td>
+        <td>NextDC, Macquarie DC, Microsoft, Digital Realty</td>
+        <td class="en">Govt sustainability mandate + excellent solar</td>
+        <td class="zh" style="display:none">政府可持续性要求 + 极佳光照</td>
+        <td>1–3 GW</td>
+      </tr>
+      <tr>
+        <td><strong>Canada</strong> 🇨🇦</td>
+        <td>Alberta queue (10 GW+), Microsoft, AWS, Google</td>
+        <td class="en">Grid queue bypass + deregulated market</td>
+        <td class="zh" style="display:none">电网排队绕行 + 市场化电力市场</td>
+        <td>0.5–2 GW</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== COMPETITIVE EDGE ===== -->
+<div class="section">
+  <h2><span class="gold">06</span> &mdash;
+    <span class="en">Our Competitive Edge</span>
+    <span class="zh" style="display:none">我们的竞争优势</span>
+  </h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th><span class="en">Factor</span><span class="zh" style="display:none">因素</span></th>
+        <th><span class="en">Henderson Transpacific</span><span class="zh" style="display:none">Henderson Transpacific</span></th>
+        <th><span class="en">Typical Competitor</span><span class="zh" style="display:none">典型竞争对手</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong><span class="en">Geographic Reach</span><span class="zh" style="display:none">地域覆盖</span></strong></td>
+        <td><span class="badge b-gold"><span class="en">Transpacific — US + Asia + ME + EU</span><span class="zh" style="display:none">跨太平洋 — 美国+亚洲+中东+欧盟</span></span></td>
+        <td class="en">Single region (US-only or Asia-only)</td>
+        <td class="zh" style="display:none">单一区域（仅美国或仅亚洲）</td>
+      </tr>
+      <tr>
+        <td><strong><span class="en">Supply Chain</span><span class="zh" style="display:none">供应链</span></strong></td>
+        <td><span class="badge b-gold"><span class="en">Dual-source: Asian scale + Western QA</span><span class="zh" style="display:none">双源：亚洲规模+西方品控</span></span></td>
+        <td class="en">Single-source, higher cost</td>
+        <td class="zh" style="display:none">单一来源，成本更高</td>
+      </tr>
+      <tr>
+        <td><strong><span class="en">Cost Advantage</span><span class="zh" style="display:none">成本优势</span></strong></td>
+        <td><span class="badge b-green">15–25%</span></td>
+        <td><span class="en">Baseline pricing</span><span class="zh" style="display:none">基准定价</span></td>
+      </tr>
+      <tr>
+        <td><strong><span class="en">Deployment Speed</span><span class="zh" style="display:none">部署速度</span></strong></td>
+        <td><span class="badge b-gold"><span class="en">Weeks (containerized, pre-tested)</span><span class="zh" style="display:none">数周（集装箱化，预测试）</span></span></td>
+        <td class="en">Months (custom engineering)</td>
+        <td class="zh" style="display:none">数月（定制工程）</td>
+      </tr>
+      <tr>
+        <td><strong><span class="en">AI DC Specialization</span><span class="zh" style="display:none">AI数据中心专业化</span></strong></td>
+        <td><span class="badge b-gold"><span class="en">Purpose-built for AI workloads</span><span class="zh" style="display:none">专为AI工作负载设计</span></span></td>
+        <td class="en">Generic utility-scale solutions</td>
+        <td class="zh" style="display:none">通用公用事业级方案</td>
+      </tr>
+      <tr>
+        <td><strong><span class="en">Regulatory Expertise</span><span class="zh" style="display:none">监管专业知识</span></strong></td>
+        <td><span class="badge b-blue"><span class="en">Multi-jurisdiction (US, EU, ME, APAC)</span><span class="zh" style="display:none">多管辖区（美国、欧盟、中东、亚太）</span></span></td>
+        <td class="en">Domestic expertise only</td>
+        <td class="zh" style="display:none">仅有国内专业知识</td>
+      </tr>
+      <tr>
+        <td><strong><span class="en">Bilingual Operations</span><span class="zh" style="display:none">双语运营</span></strong></td>
+        <td><span class="badge b-gold"><span class="en">English + Chinese (supply chain + clients)</span><span class="zh" style="display:none">中英双语（供应链+客户）</span></span></td>
+        <td class="en">Single language</td>
+        <td class="zh" style="display:none">单一语言</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== CTA ===== -->
+<div class="cta-section">
+  <h2>
+    <span class="en">Power the Future of AI — With Us</span>
+    <span class="zh" style="display:none">携手共建AI未来</span>
+  </h2>
+  <p class="en">The AI data center buildout is the single largest infrastructure investment in human history. The window to secure your clean energy supply is closing fast. Let's talk about how Henderson Transpacific can power your next AI campus — on time, on budget, at any scale.</p>
+  <p class="zh" style="display:none">AI数据中心建设是人类历史上最大规模的基础设施投资。确保清洁能源供应的窗口正在快速关闭。让我们谈谈Henderson Transpacific如何为您的下一个AI园区供电 — 按时、按预算、任何规模。</p>
+  <div style="margin-top:20px">
+    <span class="cta-btn" style="margin-right:12px">
+      <span class="en">Contact Us</span>
+      <span class="zh" style="display:none">联系我们</span>
+    </span>
+    <span class="cta-btn" style="background:transparent;border:2px solid var(--gold);color:var(--gold)">
+      <span class="en">Download Capabilities Deck</span>
+      <span class="zh" style="display:none">下载能力介绍</span>
+    </span>
+  </div>
+  <p style="margin-top:20px;font-size:14px;opacity:.7">
+    <span class="en">Henderson Transpacific LLC &mdash; ronaldhhenderson@gmail.com</span>
+    <span class="zh" style="display:none">Henderson Transpacific LLC &mdash; ronaldhhenderson@gmail.com</span>
+  </p>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p><span class="en">&copy; 2026 Henderson Transpacific LLC. All rights reserved.</span><span class="zh" style="display:none">&copy; 2026 Henderson Transpacific LLC. 版权所有。</span></p>
+  <p style="margin-top:4px;font-size:11px;opacity:.6"><span class="en">BESS + Solar Energy Solutions for the AI Era</span><span class="zh" style="display:none">AI时代的BESS+光伏能源解决方案</span></p>
+</div>
+
+</div><!-- container -->
+
+<script>
+function setLang(lang){
+  document.querySelectorAll('.en').forEach(el=>el.style.display=lang==='en'?'':'none');
+  document.querySelectorAll('.zh').forEach(el=>el.style.display=lang==='zh'?'':'none');
+  document.getElementById('btn-en').classList.toggle('active',lang==='en');
+  document.getElementById('btn-zh').classList.toggle('active',lang==='zh');
+}
+</script>
+</body>
+</html>
