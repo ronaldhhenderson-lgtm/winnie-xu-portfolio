@@ -92,11 +92,40 @@ tbody tr:hover{background:#f1f5f9}
   .section{padding:24px 20px}
   .stat-row{grid-template-columns:repeat(2,1fr)}
 }
-@media print{.hero .lang-row{display:none}}
+@media print{.hero .lang-row{display:none};.pw-gate{display:none}}
+.pw-gate{position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:linear-gradient(135deg,#0a1628 0%,#0d1a2e 50%,#0a1628 100%);display:flex;align-items:center;justify-content:center;font-family:'Segoe UI',Roboto,sans-serif;}
+.pw-gate.hidden{display:none;}
+.pw-box{background:linear-gradient(145deg,#132040,#0a1628);border:2px solid rgba(212,162,78,.4);border-radius:20px;padding:48px 40px;max-width:420px;width:90%;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,.6);}
+.pw-box h1{font-size:28px;font-weight:800;color:var(--gold);margin-bottom:6px;}
+.pw-box .pw-sub{color:#64748b;font-size:13px;margin-bottom:28px;}
+.pw-box .pw-label{color:#c8d6e5;font-size:12px;text-align:left;margin-bottom:6px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;}
+.pw-box input{width:100%;padding:14px 16px;border:2px solid rgba(212,162,78,.3);border-radius:10px;background:rgba(255,255,255,.06);color:#fff;font-size:15px;outline:none;transition:.3s;}
+.pw-box input:focus{border-color:var(--gold);box-shadow:0 0 20px rgba(212,162,78,.2);}
+.pw-box button{width:100%;margin-top:16px;padding:14px;border:none;border-radius:10px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff;font-size:15px;font-weight:700;cursor:pointer;transition:.3s;}
+.pw-box button:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(212,162,78,.4);}
+.pw-box .pw-err{color:#ef4444;font-size:12px;margin-top:10px;min-height:18px;}
+.pw-box .pw-note{color:#64748b;font-size:10px;margin-top:20px;line-height:1.5;}
+.pw-lock-icon{font-size:48px;margin-bottom:16px;}
+.main-content{display:none;}
+.main-content.unlocked{display:block;}
 </style>
 </head>
 <body>
 
+<div class="pw-gate" id="pwGate">
+  <div class="pw-box">
+    <div class="pw-lock-icon">🔐</div>
+    <h1>Henderson Transpacific</h1>
+    <p class="pw-sub">Confidential Company Profile · 机密公司资料</p>
+    <div class="pw-label">Password / 密码</div>
+    <input type="password" id="pwInput" placeholder="Enter access code" autocomplete="off" autofocus>
+    <button id="pwBtn" onclick="verifyPw()">Authenticate</button>
+    <div class="pw-err" id="pwErr"></div>
+    <p class="pw-note">⚠️ This page contains confidential business information.<br>Unauthorized access is prohibited. All access is logged.</p>
+  </div>
+</div>
+
+<div class="main-content" id="mainContent">
 <!-- ===== HERO ===== -->
 <div class="hero">
   <div class="lang-row">
@@ -388,45 +417,4 @@ tbody tr:hover{background:#f1f5f9}
   </table>
 </div>
 
-<!-- ===== CTA ===== -->
-<div class="cta-section">
-  <h2>
-    <span class="en">Power the Future of AI — With Us</span>
-    <span class="zh" style="display:none">携手共建AI未来</span>
-  </h2>
-  <p class="en">The AI data center buildout is the single largest infrastructure investment in human history. The window to secure your clean energy supply is closing fast. Let's talk about how Henderson Transpacific can power your next AI campus — on time, on budget, at any scale.</p>
-  <p class="zh" style="display:none">AI数据中心建设是人类历史上最大规模的基础设施投资。确保清洁能源供应的窗口正在快速关闭。让我们谈谈Henderson Transpacific如何为您的下一个AI园区供电 — 按时、按预算、任何规模。</p>
-  <div style="margin-top:20px">
-    <span class="cta-btn" style="margin-right:12px">
-      <span class="en">Contact Us</span>
-      <span class="zh" style="display:none">联系我们</span>
-    </span>
-    <span class="cta-btn" style="background:transparent;border:2px solid var(--gold);color:var(--gold)">
-      <span class="en">Download Capabilities Deck</span>
-      <span class="zh" style="display:none">下载能力介绍</span>
-    </span>
-  </div>
-  <p style="margin-top:20px;font-size:14px;opacity:.7">
-    <span class="en">Henderson Transpacific LLC &mdash; ronaldhhenderson@gmail.com</span>
-    <span class="zh" style="display:none">Henderson Transpacific LLC &mdash; ronaldhhenderson@gmail.com</span>
-  </p>
-</div>
-
-<!-- Footer -->
-<div class="footer">
-  <p><span class="en">&copy; 2026 Henderson Transpacific LLC. All rights reserved.</span><span class="zh" style="display:none">&copy; 2026 Henderson Transpacific LLC. 版权所有。</span></p>
-  <p style="margin-top:4px;font-size:11px;opacity:.6"><span class="en">BESS + Solar Energy Solutions for the AI Era</span><span class="zh" style="display:none">AI时代的BESS+光伏能源解决方案</span></p>
-</div>
-
-</div><!-- container -->
-
-<script>
-function setLang(lang){
-  document.querySelectorAll('.en').forEach(el=>el.style.display=lang==='en'?'':'none');
-  document.querySelectorAll('.zh').forEach(el=>el.style.display=lang==='zh'?'':'none');
-  document.getElementById('btn-en').classList.toggle('active',lang==='en');
-  document.getElementById('btn-zh').classList.toggle('active',lang==='zh');
-}
-</script>
-</body>
-</html>
+<!-- ===== CTA 
